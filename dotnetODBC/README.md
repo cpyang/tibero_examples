@@ -1,4 +1,5 @@
 # Sample Code for dotnet ODBC in C#
+## Building and running procedures
     #dotnet new console
     #dotnet add package System.Data.Odbc
     . ./setenv.sh
@@ -6,7 +7,7 @@
     dotnet run
 
 # Required environment variables:  
-## Enable Unicode Support
+## Enable Unicode Support - Required before running "dotnet run" and "iuodbc/iusql"
     export TB_NLS_LANG=UTF8  
     export TBCLI_WCHAR_TYPE=UCS2  
 
