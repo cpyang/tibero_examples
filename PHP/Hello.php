@@ -26,7 +26,7 @@
 *
 */
 // Datasource name
-//$dsn = "DNS=tibero;Host=localhost;Port=8629;UID=tibero;PWD=tmax;CharSet=utf8";
+//$dsn = "DSN=tibero;Host=localhost;Port=8629;UID=tibero;PWD=tmax;CharSet=utf8";
 $dsn = "odbc:tibero";
 
 try {
