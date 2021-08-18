@@ -5,10 +5,10 @@ import os, pyodbc
 
 tb_connstr='DSN=tibero;Host=localhost;Port=8629;UID=tibero;PWD=tmax;CharSet=utf8'
 con = pyodbc.connect(tb_connstr) #, unicode_results=True)
-con.setdecoding(pyodbc.SQL_CHAR, encoding='utf-8')
-con.setdecoding(pyodbc.SQL_WCHAR, encoding='utf-8')
-con.setdecoding(pyodbc.SQL_WMETADATA, encoding='utf-32le')
-con.setencoding(encoding='utf-8')
+#con.setdecoding(pyodbc.SQL_CHAR, encoding='utf-8')
+#con.setdecoding(pyodbc.SQL_WCHAR, encoding='utf-8')
+#con.setdecoding(pyodbc.SQL_WMETADATA, encoding='utf-32le')
+#con.setencoding(encoding='utf-8')
 cur = con.cursor()
 sql = "select 'Hello World!' AS HELLO from dual"
 print("Query: %s" % sql)
