@@ -24,8 +24,9 @@ https://docs.djangoproject.com/en/3.2/intro/
     . ./setenv.sh
 * Initialise django database
     python3 manage.py migrate
-    python3 manage.py makemigrations polls
-    python3 manage.py sqlmigrate polls 0001
+* After made change to models
+    python3 manage.py makemigrations polls  
+    python3 manage.py sqlmigrate polls 0001  
 * Create site admin user
     python3 manage.py createsuperuser
 * Start django web service

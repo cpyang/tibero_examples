@@ -81,7 +81,6 @@ DATABASES = {
     }
 }
 """
-
 DATABASES = {
     'default': {
         'ENGINE': "django_tibero",
@@ -94,7 +93,6 @@ DATABASES = {
         },
     }
 }
-
 """
 DATABASES = {
     'default': {
@@ -111,7 +109,6 @@ DATABASES = {
     }
 }
 """
-
 PASSWORD_HASHERS = [
         'django.contrib.auth.hashers.PBKDF2PasswordHasher',
         ]
