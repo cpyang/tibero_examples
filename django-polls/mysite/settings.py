@@ -84,19 +84,33 @@ DATABASES = {
 
 DATABASES = {
     'default': {
-        'ENGINE': "django_pyodbc",
+        'ENGINE': "django_tibero",
         'HOST': "127.0.0.1,8629",
         'USER': "tibero",
         'PASSWORD': "tmax",
         'NAME': "tibero",
         'OPTIONS': {
-            'host_is_server': True,
-            'driver': "Tibero",
-            'dbms_type': 'tibero',
+            'dsn': "tibero",
         },
     }
 }
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': "django_pyodbc",
+        'HOST': "127.0.0.1,8629",
+        'NAME': "tibero",
+        'USER': "tibero",
+        'PASSWORD': "tmax",
+        'OPTIONS': {
+            'host_is_server': True,
+            'driver': "Tibero",
+            'dbms_type': "tibero",
+        },
+    }
+}
+"""
 
 PASSWORD_HASHERS = [
         'django.contrib.auth.hashers.PBKDF2PasswordHasher',
