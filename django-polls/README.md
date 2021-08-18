@@ -4,6 +4,7 @@ https://docs.djangoproject.com/en/3.2/intro/
 ## Use django-pyodbc from github repository
 * pip3 install git+https://github.com/cpyang/django-pyodbc.git  
 * Modify mysite/settings.py with Tibero as default database  
+  ```json
     DATABASES = {  
         'default': {  
             'ENGINE': "django_pyodbc",  
@@ -18,6 +19,7 @@ https://docs.djangoproject.com/en/3.2/intro/
             },  
         }  
     }  
+  ```
 * Setup Environment Variables
     . ./setenv.sh
 * Initialise django database
