@@ -1,0 +1,3 @@
+[submodule "django-polls"]
+	path = django-polls
+	url = git@github.com:TmaxTW/django-polls.git
