@@ -17,5 +17,5 @@
     export ODBCINI=`pwd`/odbc.ini  
 
 ## Enable Trace - Useful when testing connection with isql and iusql
-    export TOK_TBCLI_LOG_LVL=trace  
-    export TOK_TBCLI_LOG_DIR=`pwd`  
+    export TBCLI_LOG_LVL=trace  
+    export TBCLI_LOG_DIR=`pwd`  
