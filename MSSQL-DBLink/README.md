@@ -40,14 +40,18 @@
     GO  
 
     /****** Object:  LinkedServer [TIBERO]    Script Date: 23/07/2022 23:24:51 ******/  
+    /* Change @datasrc to configured System DSN before running this session */
     EXEC sp_addlinkedserver @server = N'TIBERO', @srvproduct=N'tibero', @provider=N'MSDASQL', @datasrc=N'tibero'  
-      
+    GO
+
     /* For security reasons the linked server remote logins password is changed with ######## */  
+    /* Change @locallogin, @rmtuser and @rmtpassword before running this session */
     EXEC sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=NULL,@rmtuser=N'tibero',@rmtpassword='########'  
     EXEC sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'SQLServer\myaccount',@rmtuser=N'tibero',@rmtpassword='########'  
-    EXEC sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'sa',@rmtuser=N'sys',@rmtpassword='tibero'  
+    EXEC sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'sa',@rmtuser=N'sys',@rmtpassword='########'  
     GO  
       
+    /* Setup additional server options */
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'collation compatible', @optvalue=N'false'  
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'data access', @optvalue=N'true'  
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'dist', @optvalue=N'false'  
