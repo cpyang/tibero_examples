@@ -27,7 +27,10 @@ month=`date +%m`
 day=`date +%d`  
 year=`date +%Y`  
 DAY=`date +"%G%m%d"`
-RMDAY=`date +"%G%m%d000000" -d'-1 month'`
+# Delete Backup Sets Older Than 1 Month
+#RMDAY=`date +"%G%m%d000000" -d'-1 month'`
+# Delete Backup Sets Older Than 10 Days
+RMDAY=`date +"%G%m%d000000" -d'-10 days'`
 export LOGFILE=$LOGDIR/full_$DAY.log
 
 ###### 190507 add ######
@@ -81,7 +84,7 @@ tbrmgr backup -s --userid $USERPWD -o $ARCHIVEDIR -a --delete-original > $LOGFIL
 # compress, skip-unused 
 #tbrmgr backup --userid $USERPWD -o $BACKUPDIR -v -c -u --with-password-file > $LOGFILE
 # no compress 
-tbrmgr backup -s --userid $USERPWD -o $BACKUPDIR -p 10 --with-password-file > $LOGFILE
+tbrmgr backup -s --userid $USERPWD -o $BACKUPDIR -p 8 --with-password-file > $LOGFILE
 # Delete Old Backup Sets
 tbrmgr delete --userid $USERPWD --beforetime $RMDAY -o $BACKUPDIR
 

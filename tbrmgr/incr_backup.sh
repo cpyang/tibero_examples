@@ -27,7 +27,6 @@ month=`date +%m`
 day=`date +%d`  
 year=`date +%Y`  
 DAY=`date +"%G%m%d"`
-RMDAY=`date +"%G%m%d000000" -d'-1 month'`
 export LOGFILE=$LOGDIR/incr_$DAY.log
 
 ###### 190507 add ######
@@ -78,7 +77,7 @@ STIME=`s_time`
 # Backup archivelog
 tbrmgr backup -s --userid $USERPWD -o $ARCHIVEDIR -a --delete-original > $LOGFILE
 # Increamental Backup
-tbrmgr backup -s --userid $USERPWD -o $BACKUPDIR -i -p 10 --with-password-file > $LOGFILE
+tbrmgr backup -s --userid $USERPWD -o $BACKUPDIR -i -p 8 --with-password-file > $LOGFILE
 
 ETIME=`s_time`  
 TOTAL=`s_interval $STIME $ETIME` 
