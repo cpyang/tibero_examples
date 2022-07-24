@@ -13,10 +13,10 @@
 #export NLS_LANG="AMERICAN_AMERICA.AL32UTF8"
 
 # Backup scripts ENV
-export BACKUP_BASE=/home/cpyang/src/tibero_examples/tbrmgr
+export BACKUP_BASE=/opt/tmaxsoft/backup
 export BINDIR=$BACKUP_BASE
-export BACKUPDIR=$BACKUP_BASE/full_backup
-export ARCHIVEDIR=$BACKUP_BASE/arch_backup
+export BACKUPDIR=$BACKUP_BASE/backup
+export ARCHIVEDIR=$BACKUP_BASE/backup
 export LOGDIR=$BACKUP_BASE/logs
 export USERPWD="sys/tibero"
 #export JAVA_HOME=/usr/java8_64
