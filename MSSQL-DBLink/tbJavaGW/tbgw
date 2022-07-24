@@ -1,0 +1,26 @@
+#! /bin/sh
+
+#Classpath
+commonsdaemon=./lib/commons-daemon-1.0.6.jar
+commonspool=./lib/commons-pool.jar
+commonscollections=./lib/commons-collections.jar
+log4j=./lib/log4j-1.2.15.jar
+msjdbc=./lib/sqljdbc.jar:./lib/sqljdbc4.jar
+asejdbc=./lib/jconn3.jar
+postgresqljdbc=./lib/postgresql-8.4-701.jdbc3.jar
+gateway=./lib/tbgateway.jar
+
+#log4j properties
+#log4jfile must be exists on classpath
+log4jfile=jgwlog.properties
+
+#Main Class
+mainclass=com.tmax.tibero.gateway.main.GatewayMain
+configfile=./jgw.cfg
+
+if [[ $# -gt 0 ]] && [[ $1 = "-v" ]] ; then
+    java -jar $gateway
+else
+    java -Xms128m -Xmx512m -Dlog4j.configuration=$log4jfile -classpath $commonsdaemon:$commonspool:$commonscollections:$log4j:$gateway:$msjdbc:$asejdbc:$postgresqljdbc:. $mainclass CONFIG=$configfile $* &
+    sleep 1
+fi

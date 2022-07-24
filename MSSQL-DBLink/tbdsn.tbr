@@ -1,0 +1,1 @@
+mssql=((GATEWAY=(LISTENER=(HOST=localhost)(PORT=9093))(TARGET=sqlserver:1433:master)(TX_MODE=LOCAL)))
