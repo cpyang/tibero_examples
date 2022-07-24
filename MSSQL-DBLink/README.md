@@ -34,34 +34,34 @@
     1. Copy Tibero ODBC Driver from $TB_HOME/client/win64 or $TB_HOME/client/win32
     2. Setup ODBC with scripts from [Tibero_ODBC_Windows](../../../../Tibero_ODBC_Windows)
 2. Connect to Microsoft SQL Server with Administor account
-    1. Create Linked Server
+    1. Create Linked Server  
     ```sql
-    USE [master]
-    GO
+    USE [master]  
+    GO  
 
-    /****** Object:  LinkedServer [TIBERO]    Script Date: 23/07/2022 23:24:51 ******/
-    EXEC master.dbo.sp_addlinkedserver @server = N'TIBERO', @srvproduct=N'tibero', @provider=N'MSDASQL', @datasrc=N'tibero'
-
-    /* For security reasons the linked server remote logins password is changed with ######## */
-    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=NULL,@rmtuser=N'tibero',@rmtpassword='########'
-    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'SQLServer\myaccount',@rmtuser=N'tibero',@rmtpassword='########'
-    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'sa',@rmtuser=N'sys',@rmtpassword='tibero'
-    GO
-
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'collation compatible', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'data access', @optvalue=N'true'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'dist', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'pub', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'rpc', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'rpc out', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'sub', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'connect timeout', @optvalue=N'0'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'collation name', @optvalue=null
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'lazy schema validation', @optvalue=N'false'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'query timeout', @optvalue=N'0'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'use remote collation', @optvalue=N'true'
-    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'remote proc transaction promotion', @optvalue=N'true'
-    GO
+    /****** Object:  LinkedServer [TIBERO]    Script Date: 23/07/2022 23:24:51 ******/  
+    EXEC master.dbo.sp_addlinkedserver @server = N'TIBERO', @srvproduct=N'tibero', @provider=N'MSDASQL', @datasrc=N'tibero'  
+      
+    /* For security reasons the linked server remote logins password is changed with ######## */  
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=NULL,@rmtuser=N'tibero',@rmtpassword='########'  
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'SQLServer\myaccount',@rmtuser=N'tibero',@rmtpassword='########'  
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=N'sa',@rmtuser=N'sys',@rmtpassword='tibero'  
+    GO  
+      
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'collation compatible', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'data access', @optvalue=N'true'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'dist', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'pub', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'rpc', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'rpc out', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'sub', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'connect timeout', @optvalue=N'0'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'collation name', @optvalue=null  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'lazy schema validation', @optvalue=N'false'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'query timeout', @optvalue=N'0'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'use remote collation', @optvalue=N'true'  
+    EXEC master.dbo.sp_serveroption @server=N'TIBERO', @optname=N'remote proc transaction promotion', @optvalue=N'true'  
+    GO  
     ```
     2. Test Query
     ```sql
