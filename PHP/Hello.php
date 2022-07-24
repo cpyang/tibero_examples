@@ -27,7 +27,7 @@
 */
 // Datasource name
 //$dsn = "DSN=tibero;Host=localhost;Port=8629;UID=tibero;PWD=tmax;CharSet=utf8";
-$dsn = "odbc:tibero";
+$dsn = "odbc:docker";
 
 try {
     // Connect to the data source
@@ -37,7 +37,7 @@ try {
     // Note the first SELECT uses the array key 'fn' as the select criteria
     // in the PDO form ':fn'.
     //$stmt = $dbh->prepare('SELECT id FROM test;SELECT @@ROWCOUNT as Rows;');
-    $stmt = $dbh->prepare('SELECT \'Hello World!\' AS HELLO FROM dual;');
+    $stmt = $dbh->prepare('SELECT \'Hello World! 哈囉 世界！\' AS HELLO FROM dual;');
 
     // Execute the prepared statement for each name in the array
     $stmt->execute();

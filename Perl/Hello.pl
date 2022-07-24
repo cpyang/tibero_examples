@@ -3,7 +3,7 @@ use strict;
 use DBI;
 my $dbh = DBI->connect("dbi:ODBC:tibero","tibero","tmax");
 #my $sql = qq{select '0','CEO','Taipei' from dual};
-my $sql = qq{select 'Hello World!' from dual};
+my $sql = qq{select 'Hello World! 哈囉 世界！' from dual};
 my $sth = $dbh->prepare($sql);
 $sth->execute();
 my ($hello);
