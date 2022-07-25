@@ -69,22 +69,22 @@
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'remote proc transaction promotion', @optvalue=N'true'  
     GO  
     ```
-    Verify Result
+    2. Verify Result
     ```sql
     select * from sysservers;
     select * from sys.linked_logins;
     ```
-    If something went wrong and need to remove Linked Server Login and Linked Server
+    3. Test Query
+    ```sql
+    select count(*) from TIBERO..SYSCAT.USER_TABLES;
+    select * from TIBERO..SYS._VT_DUAL;
+    select * from openquery(TIBERO, 'select 1 from dual');
+    ```
+    4. If something went wrong and need to remove Linked Server Login and Linked Server
     ```sql
     EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=NULL 
     EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=N'SQLServer\myaccount'
     EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=N'sa'
     EXEC sp_dropserver @server=N'TIBERO'
     GO
-    ```
-    2. Test Query
-    ```sql
-    select count(*) from TIBERO..SYSCAT.USER_TABLES;
-    select * from TIBERO..SYS._VT_DUAL;
-    select * from openquery(TIBERO, 'select 1 from dual');
     ```
