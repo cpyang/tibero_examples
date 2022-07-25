@@ -40,10 +40,12 @@
     GO  
 
     /****** Object:  LinkedServer [TIBERO]    Script Date: 23/07/2022 23:24:51 ******/  
+    /* Create Linked Server */
     /* Change @datasrc to configured System DSN before running this session */
     EXEC sp_addlinkedserver @server = N'TIBERO', @srvproduct=N'tibero', @provider=N'MSDASQL', @datasrc=N'tibero'  
     GO
 
+    /* Setup mapping beteeen local login and remote login */
     /* For security reasons the linked server remote logins password is changed with ######## */  
     /* Change @locallogin, @rmtuser and @rmtpassword before running this session */
     EXEC sp_addlinkedsrvlogin @rmtsrvname=N'TIBERO',@useself=N'False',@locallogin=NULL,@rmtuser=N'tibero',@rmtpassword='########'  
@@ -66,6 +68,19 @@
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'use remote collation', @optvalue=N'true'  
     EXEC sp_serveroption @server=N'TIBERO', @optname=N'remote proc transaction promotion', @optvalue=N'true'  
     GO  
+    ```
+    Verify Result
+    ```sql
+    select * from sysservers;
+    select * from sys.linked_logins;
+    ```
+    If something went wrong and need to remove Linked Server Login and Linked Server
+    ```sql
+    EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=NULL 
+    EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=N'SQLServer\myaccount'
+    EXEC sp_droplinkedsrvlogin @rmtsrvname=N'TIBERO',@locallogin=N'sa'
+    EXEC sp_dropserver @server=N'TIBERO'
+    GO
     ```
     2. Test Query
     ```sql
