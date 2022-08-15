@@ -21,6 +21,15 @@
     SSL_CLIENT_AUTHENTICATION = FALSE  
     SSL_CIPHER_SUITES = (SSL_RSA_WITH_AES_256_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA)  
     ```
+    ```shell
+    # Create Wallet
+    orapki wallet create -wallet $ORACLE_HOME/wallet -pwd MyWalletPassword -auto_login_local
+    # Optionally, import server certificate and create client certificate 
+    orapki wallet add -wallet $ORACLE_HOME/wallet -pwd MyWalletPassword -dn "CN=`hostname`" -keysize 1024 -self_signed -validity 3650
+    orapki wallet export -wallet $ORACLE_HOME/wallet -pwd MyWalletPassword -dn "CN=`hostname`" -cert `hostname`.crt
+    orapki wallet add -wallet $ORACLE_HOME/wallet -pwd MyWalletPassword -trusted_cert -cert server.crt
+    orapki wallet display -wallet $ORACLE_HOME/wallet -pwd MyWalletPassword 
+    ```
     2. Configure Tibero Gateway for Oracle Database, set $TBGW_HOME or default directory $TB_HOME/client/gateway
     ```shell
     cd $TB_HOME/client  
