@@ -26,13 +26,14 @@
     cd $TB_HOME/client  
     mkdir -p gateway/oracle/config
     mkdir -p gateway/oracle/log
-    echo >> $TB_HOME/client/gateway/oracle/config
+    echo >> $TB_HOME/client/gateway/oracle/config << EOF
     LOG_DIR=`$TB_HOME`/gateway/oracle/log
     LOG_LVL=2
     LISTENER_PORT=11521
     MAX_LOG_SIZE=100m
     MAX_LOG_BACKUP_SIZE=1G
     FETCH_SIZE=32k
+    EOF
     ```
     3. Prepare tbdsn.tbr  
     Create Oracle Database connection entry in $TB_HOME/client/config/tbdsn.tbr, matching the name defined in tnsname.ora
