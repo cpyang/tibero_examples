@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# inspiration:
+#     https://ogobrecht.com/posts/2020-07-29-how-to-use-mkstore-and-orapki-with-oracle-instant-client/
+#     https://andriydmytrenko.wordpress.com/2013/07/01/using-the-secure-external-password-store-with-instant-client/
+#
+export SQLCL=/opt/oracle/sqlcl/lib
+export CLASSPATH=$SQLCL/oraclepki.jar:$SQLCL/osdt_core.jar:$SQLCL/osdt_cert.jar:$CLASSPATH
+java oracle.security.pki.OracleSecretStoreTextUI $*
